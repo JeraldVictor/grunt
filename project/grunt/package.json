@@ -2,13 +2,17 @@
   "name": "grunt",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "gruntfile.js",
   "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "Jerald",
   "license": "ISC",
   "dependencies": {
-    "grunt": "^1.5.3",
-    "grunt-contrib-concat": "^2.1.0"
+    "bower": "^1.8.14",
+    "grunt": "^1.5.3"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-watch": "^1.1.0"
   }
 }

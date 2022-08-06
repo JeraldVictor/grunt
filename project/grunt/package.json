@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "gruntfile.js",
-  "scripts": {},
+  "scripts": {
+    "grunt":"grunt"
+  },
   "keywords": [],
   "author": "Jerald",
   "license": "ISC",

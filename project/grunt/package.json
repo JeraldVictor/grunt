@@ -1,0 +1,14 @@
+{
+  "name": "grunt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.5.3",
+    "grunt-contrib-concat": "^2.1.0"
+  }
+}

@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         dest: "../dist/css/style.css",
       },
       js: {
-        src: ["../lib/jquery/jquery.min.js", "../js/**/*.js"],
+        src: ["../js/**/*.js"],
         dest: "../dist/js/app.js",
       },
     },
@@ -36,6 +36,17 @@ module.exports = function (grunt) {
         },
       },
     },
+    copy: {
+      lib: {
+        files: [
+          {
+            expand: true,
+            src: ["../lib/**"],
+            dest: "../../App/lib/",
+          },
+        ],
+      },
+    },
     watch: {
       css: {
         files: ["../css/**/*.css"],
@@ -58,6 +69,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch"); // Watch file save Plugin
   grunt.loadNpmTasks("grunt-contrib-cssmin"); // Css min plugin
   grunt.loadNpmTasks("grunt-contrib-uglify"); // Js min plugin
+  grunt.loadNpmTasks("grunt-contrib-copy"); // Copy file from src to dest
 
-  grunt.registerTask("default", ["concat", "cssmin", "uglify", "watch"]);
+  grunt.registerTask("default", [
+    "copy",
+    "concat",
+    "cssmin",
+    "uglify",
+    "watch",
+  ]);
 };

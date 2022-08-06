@@ -32,7 +32,7 @@ module.exports = function (grunt) {
           sourceMap: true,
         },
         files: {
-          "../../App/js/app.js": ["../dist/js/app.js"],
+          "../dist/js/app.min.js": ["../dist/js/app.js"],
         },
       },
     },
@@ -47,6 +47,19 @@ module.exports = function (grunt) {
         ],
       },
     },
+    obfuscator: {
+      options: {
+        banner: "// obfuscated with grunt-contrib-obfuscator.\n",
+        debugProtection: true,
+        debugProtectionInterval: true,
+        // domainLock: ['www.example.com']
+      },
+      js: {
+        files: {
+          "../../App/js/app.js": "../dist/js/app.min.js",
+        },
+      },
+    },
     watch: {
       css: {
         files: ["../css/**/*.css"],
@@ -57,7 +70,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ["../js/**/*.js"],
-        tasks: ["concat:js", "uglify"],
+        tasks: ["concat:js", "uglify", "obfuscator"],
         options: {
           spawn: false,
         },
@@ -70,12 +83,14 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin"); // Css min plugin
   grunt.loadNpmTasks("grunt-contrib-uglify"); // Js min plugin
   grunt.loadNpmTasks("grunt-contrib-copy"); // Copy file from src to dest
+  grunt.loadNpmTasks("grunt-contrib-obfuscator"); // Js Obfuscation
 
   grunt.registerTask("default", [
     "copy",
     "concat",
     "cssmin",
     "uglify",
+    "obfuscator",
     "watch",
   ]);
 };

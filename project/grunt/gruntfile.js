@@ -60,10 +60,27 @@ module.exports = function (grunt) {
         },
       },
     },
+    sass: {
+      dist: {
+        options: {
+          style: "expanded",
+        },
+        files: {
+          "../css/scss/app.css": "../scss/**/*.scss",
+        },
+      },
+    },
     watch: {
       css: {
         files: ["../css/**/*.css"],
         tasks: ["concat:css", "cssmin"],
+        options: {
+          spawn: false,
+        },
+      },
+      sass: {
+        files: ["../scss/**/*.scss"],
+        tasks: ["sass", "concat:css", "cssmin"],
         options: {
           spawn: false,
         },
@@ -82,12 +99,14 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch"); // Watch file save Plugin
   grunt.loadNpmTasks("grunt-contrib-cssmin"); // Css min plugin
   grunt.loadNpmTasks("grunt-contrib-uglify"); // Js min plugin
-  grunt.loadNpmTasks("grunt-contrib-copy"); // Copy file from src to dest
-  grunt.loadNpmTasks("grunt-contrib-obfuscator"); // Js Obfuscation
+  grunt.loadNpmTasks("grunt-contrib-copy"); // Copy file from src to dest plugin
+  grunt.loadNpmTasks("grunt-contrib-obfuscator"); // Js Obfuscation plugin
+  grunt.loadNpmTasks("grunt-contrib-sass"); // Sass plugin
 
   grunt.registerTask("default", [
     "copy",
     "concat",
+    "sass",
     "cssmin",
     "uglify",
     "obfuscator",
